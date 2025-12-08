@@ -47,8 +47,8 @@
   };
 
   services.xserver = {
-    layout = "us";
-    xkbVariant = "colemak";
+    xkb.layout = "us";
+    xkb.variant = "colemak";
   };
 
   programs.hyprland.enable = false;
