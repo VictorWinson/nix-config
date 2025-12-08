@@ -74,7 +74,7 @@
 
     logiops
 
-    clash-verge
+    #clash-verge
 
     nchat
 
