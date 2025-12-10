@@ -2,8 +2,10 @@
 {
   programs.git = {
     enable = true;
-    userName = "victorWinson";
-    userEmail = "ping670301@gmail.com";
+    settings = {
+      user.name = "victorWinson";
+      user.email = "ping670301@gmail.com";
+    };
   };
 
   programs.direnv = {
@@ -16,7 +18,7 @@
     enable = true;
     syntaxHighlighting.enable = true;
     autocd = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     history.path = "/$HOME/dotfiles/zsh/.zsh_history";
     history.size = 100000;

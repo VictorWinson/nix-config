@@ -2,7 +2,7 @@
 {
   hardware.bluetooth.enable = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       #intel-media-driver
@@ -22,7 +22,7 @@
       source-han-sans
       source-han-serif
       source-code-pro
-      nerdfonts
+      nerd-fonts
       jetbrains-mono
     ];
 
