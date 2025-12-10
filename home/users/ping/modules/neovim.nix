@@ -1,9 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
-  toLua = str: "lua << EOF\n${str}\nEOF\n";
-  toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  luaConfig = builtins.readFile;
 in {
-  programs.neovim = {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
+
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
 
@@ -19,51 +22,60 @@ in {
       wl-clipboard
     ];
 
-    plugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-lspconfig;
-        config = toLuaFile ../nvim/plugin/lsp.lua;
-      }
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
 
-      {
-        plugin = comment-nvim;
-        config = toLua "require(\"Comment\").setup()";
-      }
+    opts = {
+      number = true;
+      relativenumber = true;
+      expandtab = true;
+      shiftwidth = 2;
+      tabstop = 2;
+      termguicolors = true;
+      cursorline = true;
+      ignorecase = true;
+      smartcase = true;
+      splitbelow = true;
+      splitright = true;
+      updatetime = 250;
+      signcolumn = "yes";
+      scrolloff = 5;
+    };
 
+    keymaps = [
       {
-        plugin = gruvbox-nvim;
-        config = "colorscheme gruvbox";
+        mode = "n";
+        key = "<leader>q";
+        action = "<cmd>quit<cr>";
+        options.desc = "Quit window";
       }
+      {
+        mode = "n";
+        key = "<leader>w";
+        action = "<cmd>w<cr>";
+        options.desc = "Save buffer";
+      }
+    ];
 
+    colorschemes.gruvbox.enable = true;
+
+    extraPlugins = with pkgs.vimPlugins; [
+      comment-nvim
+      gruvbox-nvim
       neodev-nvim
-
-      {
-        plugin = nvim-cmp;
-        config = toLuaFile ../nvim/plugin/cmp.lua;
-      }
-
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ../nvim/plugin/telescope.lua;
-      }
-
+      nvim-lspconfig
+      nvim-cmp
+      telescope-nvim
       telescope-fzf-native-nvim
-
       cmp_luasnip
       cmp-nvim-lsp
-
       luasnip
       friendly-snippets
-
       lualine-nvim
       nvim-web-devicons
-
       fzf-lua
-      {
-        plugin = fzf-lua;
-        config = toLuaFile ../nvim/plugin/fzf.lua;
-      }
-
       leap-nvim
       nvim-scrollbar
       undotree
@@ -71,24 +83,24 @@ in {
       markdown-preview-nvim
       vim-table-mode
       tabline-nvim
-
-      {
-        plugin = (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-        ]));
-        config = toLuaFile ../nvim/plugin/treesitter.lua;
-      }
-
+      (nvim-treesitter.withPlugins (p: [
+        p.tree-sitter-nix
+        p.tree-sitter-vim
+        p.tree-sitter-bash
+        p.tree-sitter-lua
+        p.tree-sitter-python
+        p.tree-sitter-json
+      ]))
       vim-nix
     ];
 
-    extraLuaConfig = ''
-      ${builtins.readFile ../nvim/options.lua}
+    extraConfigLua = ''
+      ${luaConfig ../nvim/options.lua}
+      ${luaConfig ../nvim/plugin/lsp.lua}
+      ${luaConfig ../nvim/plugin/cmp.lua}
+      ${luaConfig ../nvim/plugin/telescope.lua}
+      ${luaConfig ../nvim/plugin/fzf.lua}
+      ${luaConfig ../nvim/plugin/treesitter.lua}
     '';
   };
 }
