@@ -28,7 +28,7 @@
       size = 18;
     };
     shellIntegration.enableZshIntegration = true;
-    theme = "Corvine";
+    themeFile = "${pkgs.kitty-themes}/share/kitty-themes/themes/Corvine.conf";
     settings = {
       scrollback_lines = 10000;
       enable_audio_bell = false;
