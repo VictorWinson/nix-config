@@ -1,7 +1,6 @@
 # Nix build outputs
 result
 result-*
-flake.lock
 
 dist
 

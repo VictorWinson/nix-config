@@ -7,7 +7,7 @@ in {
   home.homeDirectory = homeDirectory;
 
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./modules/packages.nix
     ./modules/shell.nix
     ./modules/neovim.nix
