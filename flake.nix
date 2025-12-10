@@ -33,7 +33,10 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            lib = nixpkgs.lib // { map = builtins.map; };
+          };
           modules = [
             ./hosts/nixos
             home-manager.nixosModules.home-manager
@@ -41,7 +44,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.ping = import ./home/users/ping;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                lib = nixpkgs.lib // { map = builtins.map; };
+              };
             }
           ];
         };
