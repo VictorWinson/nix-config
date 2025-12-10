@@ -1,10 +1,12 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 let
   luaConfig = builtins.readFile;
 in {
   imports = [
     inputs.nixvim.homeModules.nixvim
   ];
+
+  _module.args.lib = lib;
 
   programs.nixvim = {
     enable = true;
