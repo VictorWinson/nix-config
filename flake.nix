@@ -28,14 +28,13 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      lib = nixpkgs.lib;
+      lib = nixpkgs.lib.extend (_: _: { map = builtins.map; });
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs;
-            lib = nixpkgs.lib // { map = builtins.map; };
+            inherit inputs lib;
           };
           modules = [
             ./hosts/nixos
@@ -45,8 +44,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.ping = import ./home/users/ping;
               home-manager.extraSpecialArgs = {
-                inherit inputs;
-                lib = nixpkgs.lib // { map = builtins.map; };
+                inherit inputs lib;
               };
             }
           ];
