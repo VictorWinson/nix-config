@@ -41,6 +41,12 @@
     git
   ];
 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
+
   programs.zsh.enable = true;
 
   services.openssh.enable = true;

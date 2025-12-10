@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  inherit (pkgs.stdenv) isAarch64;
+in
 {
   home.packages = with pkgs; [
     zip
@@ -12,7 +15,6 @@
     pydf
     tealdeer
     cmake
-    appimage-run
 
     tmux
 
@@ -46,7 +48,7 @@
     pamixer
     exiftool
     mediainfo
-    jellyfin-media-player
+    #jellyfin-media-player
     xdg-desktop-portal
     wireplumber
 
@@ -59,7 +61,7 @@
     nix-output-monitor
 
     glow
-    taskwarrior
+    taskwarrior3
     taskwarrior-tui
 
     powertop
@@ -73,8 +75,6 @@
     blueman
 
     logiops
-
-    #clash-verge
 
     nchat
 
@@ -95,5 +95,8 @@
     font-awesome
     wofi-emoji
     noto-fonts-monochrome-emoji
+  ] ++ lib.optionals (!isAarch64) [
+    appimage-run
+    clash-verge
   ];
 }

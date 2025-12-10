@@ -19,11 +19,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      system = "x86_64-linux";
+      system = if builtins ? currentSystem then builtins.currentSystem else "x86_64-linux";
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
