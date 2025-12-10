@@ -59,7 +59,7 @@
     nix-output-monitor
 
     glow
-    taskwarrior
+    taskwarrior3
     taskwarrior-tui
 
     powertop

@@ -10,7 +10,7 @@
 
     extraPackages = with pkgs; [
       lua-language-server
-      rnix-lsp
+      #rnix-lsp
       pyright
       xclip
       wl-clipboard
@@ -80,7 +80,7 @@
       vim-markdown-toc
       bufferline-nvim
       nvim-treesitter
-      nvim-treesitter-playground
+      #nvim-treesitter-playground
       nvim-treesitter-context
       vim-nix
       comment-nvim
