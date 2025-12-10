@@ -20,6 +20,6 @@ in {
 
   services.syncthing.enable = true;
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 }
