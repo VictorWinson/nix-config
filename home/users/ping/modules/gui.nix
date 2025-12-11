@@ -23,19 +23,18 @@
 
   programs.kitty = {
     enable = true;
-    font = {
-      name = "nerd-fonts-source-code-pro, noto-emoji";
-      size = 18;
-    };
-    settings = {
-      shell = "${pkgs.zsh}/bin/zsh";
-      login_shell = "yes";
-      scrollback_lines = 10000;
-      enable_audio_bell = false;
-    };
-    shellIntegration.enableZshIntegration = true;
-    #themeFile = "${pkgs.kitty-themes}/share/kitty-themes/themes/Corvine.conf";
-    theme = "Corvine";
+    #font = {
+    #  name = "nerd-fonts-source-code-pro, noto-emoji";
+    #  size = 18;
+    #};
+    #settings = {
+    #  shell = "${pkgs.zsh}/bin/zsh";
+    #  login_shell = "yes";
+    #  scrollback_lines = 10000;
+    #  enable_audio_bell = false;
+    #};
+    #shellIntegration.enableZshIntegration = true;
+    #theme = "Corvine";
   };
 
   programs.wezterm = {
@@ -49,7 +48,7 @@
         layer = "top";
         position = "top";
         height = 34;
-        output = [ "eDP-1" "HDMI-A-1" ];
+        output = [ "eDP-1" "HDMI-A-1" "Virtural-1" ];
         modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
         modules-center = [];
         modules-right = [ "backlight" "cpu" "memory" "pulseaudio" "network" "battery" "tray" ];
