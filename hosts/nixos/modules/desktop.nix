@@ -22,8 +22,7 @@
       source-han-sans
       source-han-serif
       source-code-pro
-      nerd-fonts
-      jetbrains-mono
+      nerd-fonts.jetbrains-mono
     ];
 
     fontconfig.defaultFonts = {
