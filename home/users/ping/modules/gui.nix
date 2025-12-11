@@ -27,13 +27,15 @@
       name = "nerd-fonts-source-code-pro, noto-emoji";
       size = 18;
     };
-    shellIntegration.enableZshIntegration = true;
-    #themeFile = "${pkgs.kitty-themes}/share/kitty-themes/themes/Corvine.conf";
-    theme = "Corvine";
     settings = {
+      shell = "${pkgs.zsh}/bin/zsh";
+      login_shell = "yes";
       scrollback_lines = 10000;
       enable_audio_bell = false;
     };
+    shellIntegration.enableZshIntegration = true;
+    #themeFile = "${pkgs.kitty-themes}/share/kitty-themes/themes/Corvine.conf";
+    theme = "Corvine";
   };
 
   programs.wezterm = {
@@ -169,7 +171,7 @@
 
       bind =
         [
-          "$mod, RETURN, exec, kitty --single-instance --detach --hold $SHELL -l"
+          "$mod, RETURN, exec, kitty --single-instance"
           "$mod, P, exec, pkill wofi || wofi --show=drun"
 
           "$mod, Q, killactive"
