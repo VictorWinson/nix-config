@@ -53,6 +53,7 @@ in
     #jellyfin-media-player
     xdg-desktop-portal
     wireplumber
+    cider-2
 
     pandoc
     tectonic

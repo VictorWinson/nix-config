@@ -9,10 +9,12 @@ in {
   imports = [
     inputs.nixvim.homeModules.nixvim
     inputs.niri.homeModules.niri
+    inputs.noctalia.homeModules.default
     ./modules/packages.nix
     ./modules/shell.nix
     ./modules/neovim.nix
     ./modules/gui.nix
+    ./modules/steam.nix
   ];
 
   xresources.properties = {
