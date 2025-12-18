@@ -5,28 +5,60 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "virtio_pci" "usbhid" "usb_storage" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.luks.devices."cryptlvm" = {
+    device = "/dev/disk/by-uuid/68d59f21-c04f-4447-b5b1-d8c1f2998ee9";
+    preLVM = true;
+    # allowDiscards = true; # for NVMe TRIM passthrough
+  };
+  boot.initrd.services.lvm.enable = true;
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3e3533c8-e854-4244-a95b-ea83abe30931";
-      fsType = "ext4";
+    { device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+      options = [ "subvol=@persist" ];
+    };
+
+  fileSystems."/var/log" =
+    { device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+      options = [ "subvol=@log" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/mapper/vg-root";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E196-C07C";
+    { device = "/dev/disk/by-uuid/C7AC-11C3";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/fc029ea5-8804-418c-830f-3782cf745baa"; }
+    [ { device = "/dev/mapper/vg-swap"; }
     ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

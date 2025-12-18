@@ -23,18 +23,58 @@
 
   programs.kitty = {
     enable = true;
-    #font = {
-    #  name = "nerd-fonts-source-code-pro, noto-emoji";
-    #  size = 18;
-    #};
-    #settings = {
-    #  shell = "${pkgs.zsh}/bin/zsh";
-    #  login_shell = "yes";
-    #  scrollback_lines = 10000;
-    #  enable_audio_bell = false;
-    #};
-    #shellIntegration.enableZshIntegration = true;
-    #theme = "Corvine";
+    font = {
+      name = "nerd-fonts-source-code-pro, noto-emoji";
+      size = 18;
+    };
+    settings = {
+      shell = "${pkgs.zsh}/bin/zsh";
+      login_shell = "yes";
+      scrollback_lines = 10000;
+      enable_audio_bell = false;
+    };
+    shellIntegration.enableZshIntegration = true;
+    themeFile = "Corvine";
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+    settings = {
+
+      prefer-no-csd = true;
+      clipboard.disable-primary = true;
+      
+      hotkey-overlay.skip-at-startup = true;
+
+      input = {
+        keyboard.xkb = {
+          layout = "us";
+          variant = "colemak";
+          options = "caps:escape";
+        };
+        touchpad = {
+          tap = true;
+          natural-scroll = false;
+          dwt = true;
+        };
+      };
+
+      layout = {
+        gaps = 12;
+
+        focus-ring = {
+          enable = true;
+        };
+      };
+
+
+      binds = {
+        #"Mod+Shift+D".action = quit;
+        "Mod+Return".action.spawn = "kitty";
+      };
+
+    };
   };
 
   programs.wezterm = {
@@ -42,7 +82,7 @@
   };
 
   programs.waybar = {
-    enable = true;
+    enable = false;
     settings = {
       mainBar = {
         layer = "top";
@@ -103,7 +143,7 @@
   };
 
   programs.alacritty = {
-    enable = false;
+    enable = true;
     settings = {
       env.TERM = "xterm-256color";
       font = {
@@ -116,7 +156,7 @@
   };
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     settings = {
       exec-once = "waybar & syncthing & kitty & sudo logid -c ~/.config/logid.cfg";
       input = {

@@ -18,6 +18,8 @@ in
 
     tmux
 
+    #niri
+
     mtr
     iperf3
     dnsutils
@@ -78,8 +80,6 @@ in
 
     nchat
 
-    hmcl
-
     strace
     ltrace
     lsof
@@ -97,6 +97,6 @@ in
     noto-fonts-monochrome-emoji
   ] ++ lib.optionals (!isAarch64) [
     appimage-run
-    clash-verge
+    #clash-verge
   ];
 }

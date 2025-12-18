@@ -8,6 +8,7 @@ in {
 
   imports = [
     inputs.nixvim.homeModules.nixvim
+    inputs.niri.homeModules.niri
     ./modules/packages.nix
     ./modules/shell.nix
     ./modules/neovim.nix
