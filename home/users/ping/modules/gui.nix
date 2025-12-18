@@ -66,13 +66,15 @@
         focus-ring = {
           enable = true;
         };
+
+        default-column-width.proportion = 0.5;
       };
 
 
       binds = {
         "Mod+Return".action.spawn = "kitty";
 
-        "Mod+P".action.spawn = "pkill wofi || wofi --show=drun";
+        "Mod+P".action.spawn = "pkill wofi || wofi --show=dmenu";
         "Mod+Print".action.spawn = "grim -t jpeg -q 90 -g \"$(slurp)\" - | swappy -f -";
 
         "Mod+Q".action."close-window" = [ ];
@@ -123,6 +125,26 @@
         "Mod+Shift+8".action."move-column-to-workspace" = 8;
         "Mod+Shift+9".action."move-column-to-workspace" = 9;
         "Mod+Shift+0".action."move-column-to-workspace" = 10;
+
+        "Mod+Tab".action."focus-workspace-previous" = [ ]; # Swap to previous workspace
+
+      # "Mod+Left".action."shrink-window-left" = [ ]; # Resize with Ctrl helpers
+      # "Mod+Right".action."shrink-window-right" = [ ];
+      # "Mod+Up".action."shrink-window-up" = [ ];
+      # "Mod+Down".action."shrink-window-down" = [ ];
+
+              # Optional alternate keybindings. Uncomment any of these to try different layouts:
+      # "Mod+Left".action."focus-column-left" = [ ]; # Navigate columns with arrows
+      # "Mod+Right".action."focus-column-right" = [ ];
+      # "Mod+Up".action."focus-window-up" = [ ];
+      # "Mod+Down".action."focus-window-down" = [ ];
+      # "Mod+Shift+Left".action."move-column-left" = [ ]; # Move columns with arrows
+      # "Mod+Shift+Right".action."move-column-right" = [ ];
+      # "Mod+Shift+Up".action."move-window-up" = [ ];
+      # "Mod+Shift+Down".action."move-window-down" = [ ];
+        "Mod+Minus".action."set-column-width" = "-10%"; # Fine column resize
+        "Mod+Equal".action."set-column-width" = "+10%";
+
       };
 
     };

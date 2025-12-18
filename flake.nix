@@ -4,8 +4,8 @@
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
-      "https://cache.nixos.org"
       "https://mirror.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
       #"https://hyprland.cachix.org"
     ];
     extra-substituters = [ "https://nix-community.cachix.org" ];
