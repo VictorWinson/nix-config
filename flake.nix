@@ -4,9 +4,9 @@
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
+      "https://cache.nixos.org"
       "https://mirror.tuna.tsinghua.edu.cn/nix-channels/store"
       #"https://hyprland.cachix.org"
-      #"https://cache.nixos.org/"
     ];
     extra-substituters = [ "https://nix-community.cachix.org" ];
     extra-trusted-public-keys = [
