@@ -70,8 +70,69 @@
 
 
       binds = {
-        #"Mod+Shift+D".action = quit;
         "Mod+Return".action.spawn = "kitty";
+
+        "Mod+P".action.spawn = "pkill wofi || wofi --show=drun";
+        "Mod+Print".action.spawn = "grim -t jpeg -q 90 -g \"$(slurp)\" - | swappy -f -";
+
+        "Mod+Q".action = close-window;
+        "Mod+Shift+Q".action = quit;
+
+        "Mod+H".action = focus-window-left;
+        "Mod+J".action = focus-window-down;
+        "Mod+K".action = focus-window-up;
+        "Mod+L".action = focus-window-right;
+
+        "Mod+Shift+H".action = move-window-left;
+        "Mod+Shift+J".action = move-window-down;
+        "Mod+Shift+K".action = move-window-up;
+        "Mod+Shift+L".action = move-window-right;
+
+        "Mod+G".action = toggle-window-floating;
+        "Mod+F".action = fullscreen-window;
+        "Mod+Shift+F".action = fullscreen;
+
+        "Mod+T".action = toggle-window-scratchpad;
+        "Mod+Shift+T".action = move-window-to-scratchpad;
+        "Mod+S".action = toggle-window-scratchpad;
+        "Mod+Shift+S".action = move-window-to-scratchpad;
+        "Mod+Apostrophe".action = toggle-window-scratchpad;
+        "Mod+Shift+Apostrophe".action = move-window-to-scratchpad;
+        "Mod+R".action = toggle-window-scratchpad;
+        "Mod+Shift+R".action = move-window-to-scratchpad;
+
+        "Mod+Comma".action = focus-monitor-left;
+        "Mod+Period".action = focus-monitor-right;
+        "Mod+Shift+Comma".action = move-window-to-monitor-left;
+        "Mod+Shift+Period".action = move-window-to-monitor-right;
+
+        "Mod+Space".action = switch-preset-column-layout;
+        "Mod+Shift+Space".action = toggle-window-floating;
+        "Mod+U".action = consume-or-expel-window-left;
+        "Mod+D".action = consume-or-expel-window-right;
+        "Mod+M".action = focus-workspace-master;
+
+        "Mod+1".action.workspace = 1;
+        "Mod+2".action.workspace = 2;
+        "Mod+3".action.workspace = 3;
+        "Mod+4".action.workspace = 4;
+        "Mod+5".action.workspace = 5;
+        "Mod+6".action.workspace = 6;
+        "Mod+7".action.workspace = 7;
+        "Mod+8".action.workspace = 8;
+        "Mod+9".action.workspace = 9;
+        "Mod+0".action.workspace = 10;
+
+        "Mod+Shift+1".action.move-window-to-workspace = 1;
+        "Mod+Shift+2".action.move-window-to-workspace = 2;
+        "Mod+Shift+3".action.move-window-to-workspace = 3;
+        "Mod+Shift+4".action.move-window-to-workspace = 4;
+        "Mod+Shift+5".action.move-window-to-workspace = 5;
+        "Mod+Shift+6".action.move-window-to-workspace = 6;
+        "Mod+Shift+7".action.move-window-to-workspace = 7;
+        "Mod+Shift+8".action.move-window-to-workspace = 8;
+        "Mod+Shift+9".action.move-window-to-workspace = 9;
+        "Mod+Shift+0".action.move-window-to-workspace = 10;
       };
 
     };
