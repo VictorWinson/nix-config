@@ -8,5 +8,5 @@
     ./modules/desktop.nix
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "TX-air-5060";
 }
