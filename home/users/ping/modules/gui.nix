@@ -79,14 +79,14 @@
         "Mod+Shift+Q".action.quit = [ ];
 
         "Mod+H".action."focus-column-left" = [ ];
-        "Mod+J".action."focus-window-down" = [ ];
-        "Mod+K".action."focus-window-up" = [ ];
-        "Mod+L".action."focus-column-right" = [ ];
+        "Mod+N".action."focus-window-down" = [ ];
+        "Mod+E".action."focus-window-up" = [ ];
+        "Mod+I".action."focus-column-right" = [ ];
 
         "Mod+Shift+H".action."move-column-left" = [ ];
-        "Mod+Shift+J".action."move-window-down" = [ ];
-        "Mod+Shift+K".action."move-window-up" = [ ];
-        "Mod+Shift+L".action."move-column-right" = [ ];
+        "Mod+Shift+N".action."move-window-down" = [ ];
+        "Mod+Shift+E".action."move-window-up" = [ ];
+        "Mod+Shift+I".action."move-column-right" = [ ];
 
         "Mod+G".action."toggle-window-floating" = [ ];
         "Mod+F".action."maximize-column" = [ ];
