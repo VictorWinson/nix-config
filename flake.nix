@@ -39,11 +39,11 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        "TX-air-5060" = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/nixos
+            ./hosts/TX-air-5060
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
