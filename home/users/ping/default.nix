@@ -14,7 +14,6 @@ in {
     ./modules/shell.nix
     ./modules/neovim.nix
     ./modules/gui.nix
-    ./modules/steam.nix
   ];
 
   xresources.properties = {
