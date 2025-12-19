@@ -13,13 +13,22 @@
     ];
   };
 
+  services.asusd.enable = true;
+  services.supergfxd.enable = true;
+  environment.systemPackages = with pkgs; [ asusctl supergfxctl ];
+
+  systemd.services.supergfxd.path = with pkgs; [ kmod pciutils ];
+
   services.xserver.videoDrivers = [
     "amdgpu"
     "nvidia"
   ];
   hardware.nvidia = {
+    open = true;
     modesetting.enable = true;
     nvidiaSettings = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
 
     # Optional driver choice (default is stable):
     # package = config.boot.kernelPackages.nvidiaPackages.production;

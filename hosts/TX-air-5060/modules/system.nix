@@ -1,5 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
+  #nix.settings = {
+  #  substituters = lib.mkAfter [
+  #    "https://cache.flox.dev"
+  #  ];
+  #  trusted-public-keys = lib.mkAfter [
+  #    "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+  #  ];
+  #};
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -40,6 +49,8 @@
     wget
     curl
     git
+    lm_sensors
+    xwayland-satellite
   ];
 
   environment.pathsToLink = [
