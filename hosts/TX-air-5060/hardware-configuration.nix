@@ -17,6 +17,7 @@
   };
   boot.initrd.services.lvm.enable = true;
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [ "btusb.enable_autosuspend=n" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -61,4 +62,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.enableRedistributableFirmware = true;
+  hardware.firmware = [ pkgs.linux-firmware ];
 }
