@@ -9,6 +9,7 @@
         Experimental = true;
         FastConnectable = true;
         ControllerMode = "dual";
+        AutoEnable = true;
         Privacy = "device";
       };
       Policy.AutoEnable = true;
