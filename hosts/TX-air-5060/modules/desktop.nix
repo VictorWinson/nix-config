@@ -1,6 +1,30 @@
 { pkgs, ... }:
 {
-  hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+    };
+  };
+
+  systemd.user.services.blueman-applet = {
+    description = "Blueman tray applet";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session-pre.target" "bluetooth.target" ];
+    path = with pkgs; [ blueman bluez ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.blueman}/bin/blueman-applet";
+      Restart = "on-failure";
+    };
+  };
+
+  services.blueman.enable = true;
+  programs.dconf.enable = true;
 
   hardware.graphics = {
     enable = true;
