@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    #./modules/proxy.nix
+    ./modules/proxy.nix
     ./modules/system.nix
     ./modules/power.nix
     ./modules/audio.nix
