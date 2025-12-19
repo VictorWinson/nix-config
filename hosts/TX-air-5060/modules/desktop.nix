@@ -8,15 +8,22 @@
       General = {
         Experimental = true;
         FastConnectable = true;
+        ControllerMode = "dual";
         AutoEnable = true;
         Privacy = "device";
       };
+      Policy.AutoEnable = true;
     };
   };
 
   boot.extraModprobeConfig = ''
     options btusb enable_autosuspend=n
     options bluetooth disable_ertm=Y
+  '';
+
+  services.udev.extraRules = ''
+    # Prevent autosuspend on the IMC Networks Bluetooth radio (13d3:3612)
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="13d3", ATTR{idProduct}=="3612", TEST=="power/control", ATTR{power/control}="on"
   '';
 
   systemd.user.services.blueman-applet = {
