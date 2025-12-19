@@ -1,15 +1,23 @@
 { pkgs, ... }:
 {
-    hardware.bluetooth = {
+  hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    package = pkgs.bluez;
     settings = {
       General = {
         Experimental = true;
         FastConnectable = true;
+        AutoEnable = true;
+        Privacy = "device";
       };
     };
   };
+
+  boot.extraModprobeConfig = ''
+    options btusb enable_autosuspend=n
+    options bluetooth disable_ertm=Y
+  '';
 
   systemd.user.services.blueman-applet = {
     description = "Blueman tray applet";
