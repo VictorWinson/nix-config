@@ -18,6 +18,7 @@
   boot.initrd.services.lvm.enable = true;
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   fileSystems."/" =
     { device = "/dev/mapper/vg-root";
