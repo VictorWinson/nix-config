@@ -99,5 +99,6 @@ in
   ] ++ lib.optionals (!isAarch64) [
     appimage-run
     #clash-verge
+    davinci-resolve
   ];
 }

@@ -12,7 +12,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  time.timeZone = "Pacific/Auckland";
+  #time.timeZone = "Pacific/Auckland";
+  time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "zh_CN.UTF-8";
@@ -27,6 +28,11 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
+  #networking.networkmanager.settings = {
+  #  "connection" = { };
+  #  "device" = { "wifi.powersave" = 2; };
+  #};
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = ["root" "@wheel"];
