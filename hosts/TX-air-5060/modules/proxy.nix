@@ -6,7 +6,8 @@ let
   # proxy = "http://192.168.3.61:1082";
   #
   # If it's a SOCKS5 proxy, use this instead (recommended if available):
-   proxy = "socks5h://192.168.3.61:1082";
+   #proxy = "socks5h://192.168.3.61:1082";
+   #proxy = "socks5h://192.168.1.3:1082";
 in
 {
   # System-wide proxy env (useful for many tools)

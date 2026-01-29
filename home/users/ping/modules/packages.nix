@@ -38,6 +38,9 @@ in
     gawk
     zstd
     gnupg
+    wineWowPackages.stable  # 32-bit + 64-bit Wine on x86_64
+    winetricks
+    bottles
 
     brightnessctl
     dunst
@@ -53,7 +56,9 @@ in
     #jellyfin-media-player
     xdg-desktop-portal
     wireplumber
-    cider-2
+    #cider-2
+    #tidal-hifi
+    qutebrowser
 
     pandoc
     tectonic
@@ -80,6 +85,7 @@ in
     logiops
 
     nchat
+    ayugram-desktop
 
     strace
     ltrace
@@ -98,7 +104,8 @@ in
     noto-fonts-monochrome-emoji
   ] ++ lib.optionals (!isAarch64) [
     appimage-run
+    baidupcs-go
     #clash-verge
-    davinci-resolve
+    #davinci-resolve
   ];
 }

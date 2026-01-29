@@ -12,8 +12,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  #time.timeZone = "Pacific/Auckland";
-  time.timeZone = "Asia/Shanghai";
+  time.timeZone = "Pacific/Auckland";
+  #time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "zh_CN.UTF-8";
@@ -66,6 +66,7 @@
 
 
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   services.openssh.enable = true;
 

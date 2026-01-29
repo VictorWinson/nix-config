@@ -47,6 +47,17 @@
         };
       };
 
+      outputs = {
+        "eDP-1" = {
+          scale = 1.5;
+          #position = "0,0";
+        };
+        "HDMI-A-1" = {
+          scale = 4.0;
+          #position = "2560,0";
+        };
+      };
+
       layout = {
         gaps = 12;
 

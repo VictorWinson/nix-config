@@ -13,7 +13,8 @@
     ];
   };
 
-  
+  services.upower.enable = true;
+
   services.asusd = {
     enable = true;
     enableUserService = true; # enables the user-side companion service :contentReference[oaicite:1]{index=1}
